@@ -21,4 +21,10 @@ if __name__ == "__main__":
     parsed_text = parse_by_mecab(text)
     parsed_texts = parsed_text.split("\n")
     elements = [re.split("\\s", item) for item in parsed_texts if item]
-    print(elements)
+    japinese = []
+    for element in elements:
+        if element[0] == "EOS":
+            continue
+        japinese_item = re.sub("[ぁ-んァ-ヴ]", "", element[0])
+        japinese.append(japinese_item)
+    print("".join(japinese))
