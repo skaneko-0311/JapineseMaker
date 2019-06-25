@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
+import re
 import MeCab
 
 
@@ -18,4 +19,6 @@ def parse_by_mecab(text):
 if __name__ == "__main__":
     text = get_text_from_args(sys.argv)
     parsed_text = parse_by_mecab(text)
-    print(parsed_text)
+    parsed_texts = parsed_text.split("\n")
+    elements = [re.split("\\s", item) for item in parsed_texts if item]
+    print(elements)
