@@ -1,5 +1,9 @@
+import sys
 import MeCab
 
-str = "となりの隣がとなりのトトロ"
+args = sys.argv
+if len(args) != 2:
+    sys.exit(1)
+str = args[1]
 tagger = MeCab.Tagger()
 print(tagger.parse(str))
